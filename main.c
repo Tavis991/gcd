@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-void swap(int *a, int *b);
-int gcdrec(int n1, int n2);
+#include <string.h>
+#include "fun.h"
+#include "readnums.h"
+#include "gcdbunch.h"
 
 int main(int argc, char* argv[]) {
-
-    if (argc!=3) {  printf("2 arguments for program");
+    //calculating GCD & LCM of an array of command line inserted integers recursively
+    if (argc<3) {  printf("2 or more arguments for program");
         exit(1);}
     for (int i=1;i<argc;i++)
         for (int j=0; argv[i][j] != '\0'; j++){
@@ -15,13 +17,13 @@ int main(int argc, char* argv[]) {
                 exit(1);
             }
         }
+    int* argnum = readnums(argc, argv);
+    int gcd=1;
 
-    int n1= atoi(argv[1]);
-    int n2= atoi(argv[2]);
-    int gcd;
-    if (n1<n2){swap(&n1,&n2);}
-    gcd=gcdrec(n1,n2);
-    printf("gcd is %d \nlcm is %d\n",gcd , n1*n2/gcd);
+    gcd=gcdbunch(argc, argnum);
+    int mul= (argnum[argc-2]*argnum[argc-1]);
+    printf("gcd is %d \nlcm is %d\n",gcd , mul/gcd);
+    free(argnum);
     return 0;
 
 }
