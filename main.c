@@ -18,11 +18,9 @@ int main(int argc, char* argv[]) {
             }
         }
     int* argnum = readnums(argc, argv);
-    int gcd=1;
-
-    gcd=gcdbunch(argc, argnum);
-    int mul= (argnum[argc-2]*argnum[argc-1]);
-    printf("gcd is %d \nlcm is %d\n",gcd , mul/gcd);
+    int * modstuffs;
+    modstuffs=gcdbunch(argc, argnum);
+    printf("gcd is %d \nlcm is %d\n",*modstuffs , *(modstuffs+1));
     free(argnum);
     return 0;
 

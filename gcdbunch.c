@@ -3,17 +3,22 @@
 //
 // Created by tuli on 29/05/2020.
 //
-int gcdbunch(int argc, int* argnum){
-    if (argc<2){
-        return (gcdrec(*argnum, *(argnum+1)));
-    }
-    while (argc>1)
+int* gcdbunch(int argc, int* argnum){
+    int lcm=1;
+
+    while (argc>2)
     {
     int n1=*argnum;
-    int n2 =*(argnum+1);
+    int n2=*(argnum+1);
+
     argnum[1]=gcdrec(n1,n2);
+    lcm*=n1*n2/argnum[1];
     argnum++;
     argc--;
     }
-    return (gcdrec(*argnum, *(argnum+1)));
+    int gcd=gcdrec(*argnum, *(argnum+1));
+    int* re;
+    re[0]=gcd;
+    re[1]=lcm;
+    return (re);
     }
