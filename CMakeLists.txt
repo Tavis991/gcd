@@ -3,4 +3,4 @@ project(gcd_lcm_finder C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(untitled1 main.c fun.h fun.c)
+add_executable(untitled1 main.c fun.h fun.c readnums.h readnums.c gcdbunch.c gcdbunch.h)
